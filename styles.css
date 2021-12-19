@@ -1,0 +1,41 @@
+#title{
+    text-align: center;
+    padding-top: 2em;
+}
+
+#paintArea {
+    margin: auto;
+    
+    height: 600px;
+    width: 700px;
+}
+
+#controls {
+    float:left;
+    display:flex;
+    flex-direction: column;
+}
+
+
+
+/* #resetBtn {
+    
+} */
+
+#colorTitle {
+    float:left;
+    top: 6px;
+    position:relative;
+    margin-right: 4px;
+}
+
+#canvas{
+    margin:auto;
+    display: grid;
+    height: 500px;
+    width: 500px;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto ;
+    grid-template-rows: auto;
+    background-color: white;
+    border: solid black;
+}

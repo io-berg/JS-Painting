@@ -9,8 +9,18 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1 id="title">16-bit Paint</h1>
-
+        <h1 id="title">256-pixel Paint</h1>
+        <div id="paintArea">
+            <div id="controls">
+                <h3 id="controlsHeader">Controls</h3>
+                <div id="colorPickDiv">
+                    <label id="colorTitle">Select Color:</label>
+                    <input id="colorInput" type="color"></input>
+                </div>
+                <button id="resetBtn">Reset Canvas</button>
+            </div>
+            <div id="canvas"></div>
+        </div>
         
         <script src="scripts.js" async defer></script>
     </body>
