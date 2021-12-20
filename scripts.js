@@ -2,11 +2,34 @@ const canvasElem = document.querySelector("#canvas");
 const colorPicker = document.querySelector("#colorInput");
 const resetBtn = document.querySelector("#resetBtn");
 const rainbowBtn = document.querySelector("#rainbowBtn");
+const sizeAdjustBtn = document.querySelector("#sizeAdjustBtn");
+const canvasX = document.querySelector("#canvasXSize");
+const canvasY = document.querySelector("#canvasYSize");
 
 let colorMode = 1; // 1 for colorpicker, 2 for rainbow mode.
 let currentColor = "black" 
 rainbowBtn.addEventListener('click', () => colorMode == 1 ? colorMode = 2 : colorMode = 1);
 colorPicker.addEventListener("input", changeColor);
+
+let canvasWidth = 16;
+let canvasHeight = 16;
+
+createPixels();
+
+sizeAdjustBtn.addEventListener('click', adjustCanvasSize);
+
+function adjustCanvasSize() {
+    canvasHeight = canvasY.value;
+    canvasWidth = canvasX.value;
+
+    canvasElem.style.gridTemplateColumns = `repeat(${canvasWidth}, auto)`
+    canvasElem.textContent = "";
+
+    createPixels();
+    let pixels = canvasWidth * canvasHeight;
+    document.querySelector("#title").textContent = pixels + "-pixel Paint"
+}
+
 
 function changeColor() {
     if (colorMode == 2)
@@ -34,13 +57,14 @@ function clearCanvas() {
     pixels.forEach((e) => e.style.backgroundColor = "white");
 }
 
-
-for (let i = 0; i < 16; i++){
-    for (let j = 0; j < 16; j++){
-        let newDiv = document.createElement('div');
-        newDiv.classList += "canvasPixel";
-        newDiv.addEventListener('mouseover', paintPixel);
-        canvasElem.appendChild(newDiv);
+function createPixels() {
+    for (let i = 0; i < canvasHeight; i++) {
+        for (let j = 0; j < canvasWidth; j++) {
+            let newDiv = document.createElement('div');
+            newDiv.classList += "canvasPixel";
+            newDiv.addEventListener('mouseover', paintPixel);
+            canvasElem.appendChild(newDiv);
+        }
     }
 }
 
